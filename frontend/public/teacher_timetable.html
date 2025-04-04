@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Timetable - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar - will be injected by admin_nav.js -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-6">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Weekly Timetable</h1>
+                        <p class="text-sm text-gray-600">View and manage your class schedule</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="teacher_dashboard.html" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+                        </a>
+                        <div class="relative">
+                            <button id="printScheduleBtn" class="flex items-center text-gray-700 hover:text-gray-900">
+                                <i class="fas fa-print mr-2"></i>Print Schedule
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timetable Controls -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center space-x-4">
+                            <button id="prevWeekBtn" class="p-2 rounded-full hover:bg-gray-100">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h2 id="currentWeekDisplay" class="text-lg font-medium">July 24 - July 30, 2023</h2>
+                            <button id="nextWeekBtn" class="p-2 rounded-full hover:bg-gray-100">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button id="todayBtn" class="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
+                                Today
+                            </button>
+                            <div>
+                                <select id="viewSelect" class="rounded-md border p-2 focus:ring-purple-500 focus:border-purple-500">
+                                    <option value="week">Week View</option>
+                                    <option value="day">Day View</option>
+                                    <option value="month">Month View</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Timetable -->
+                <div id="weekViewContainer" class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 text-center">
+                            <span class="text-sm font-medium text-gray-500">Time</span>
+                        </div>
+                        <div class="p-4 border-r text-center">
+                            <div class="font-medium">Monday</div>
+                            <div class="text-sm text-gray-500">Jul 24</div>
+                        </div>
+                        <div class="p-4 border-r text-center">
+                            <div class="font-medium">Tuesday</div>
+                            <div class="text-sm text-gray-500">Jul 25</div>
+                        </div>
+                        <div class="p-4 border-r text-center bg-purple-50">
+                            <div class="font-medium">Wednesday</div>
+                            <div class="text-sm text-gray-500">Jul 26</div>
+                        </div>
+                        <div class="p-4 border-r text-center">
+                            <div class="font-medium">Thursday</div>
+                            <div class="text-sm text-gray-500">Jul 27</div>
+                        </div>
+                        <div class="p-4 border-r text-center">
+                            <div class="font-medium">Friday</div>
+                            <div class="text-sm text-gray-500">Jul 28</div>
+                        </div>
+                        <div class="p-4 border-r text-center">
+                            <div class="font-medium">Saturday</div>
+                            <div class="text-sm text-gray-500">Jul 29</div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <div class="font-medium">Sunday</div>
+                            <div class="text-sm text-gray-500">Jul 30</div>
+                        </div>
+                    </div>
+
+                    <!-- Time Slot: 8:00 - 9:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">8:00 - 9:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 9:00 - 10:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">9:00 - 10:00</span>
+                        </div>
+                        <div class="p-2 border-r">
+                            <div class="bg-blue-100 p-2 rounded-lg border-l-4 border-blue-500 h-full">
+                                <div class="font-medium text-blue-800">Data Structures</div>
+                                <div class="text-sm text-blue-600">CS-2A • Room B201</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50">
+                            <div class="bg-blue-100 p-2 rounded-lg border-l-4 border-blue-500 h-full">
+                                <div class="font-medium text-blue-800">Data Structures</div>
+                                <div class="text-sm text-blue-600">CS-2A • Room B201</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r">
+                            <div class="bg-blue-100 p-2 rounded-lg border-l-4 border-blue-500 h-full">
+                                <div class="font-medium text-blue-800">Data Structures</div>
+                                <div class="text-sm text-blue-600">CS-2A • Room B201</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 10:00 - 11:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">10:00 - 11:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 11:00 - 12:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">11:00 - 12:00</span>
+                        </div>
+                        <div class="p-2 border-r">
+                            <div class="bg-purple-100 p-2 rounded-lg border-l-4 border-purple-500 h-full">
+                                <div class="font-medium text-purple-800">Algorithm Design</div>
+                                <div class="text-sm text-purple-600">CS-3A • Room A105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r">
+                            <div class="bg-purple-100 p-2 rounded-lg border-l-4 border-purple-500 h-full">
+                                <div class="font-medium text-purple-800">Algorithm Design</div>
+                                <div class="text-sm text-purple-600">CS-3A • Room A105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r">
+                            <div class="bg-purple-100 p-2 rounded-lg border-l-4 border-purple-500 h-full">
+                                <div class="font-medium text-purple-800">Algorithm Design</div>
+                                <div class="text-sm text-purple-600">CS-3A • Room A105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 12:00 - 13:00 -->
+                    <div class="grid grid-cols-8 border-b bg-gray-50">
+                        <div class="p-4 border-r bg-gray-100 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">12:00 - 13:00</span>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle bg-purple-50">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 border-r text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                        <div class="p-2 text-center align-middle">
+                            <div class="text-gray-500 text-sm font-medium h-full flex items-center justify-center">LUNCH BREAK</div>
+                        </div>
+                    </div>
+
+                    <!-- Time Slot: 13:00 - 14:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">13:00 - 14:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 14:00 - 15:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">14:00 - 15:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r">
+                            <div class="bg-yellow-100 p-2 rounded-lg border-l-4 border-yellow-500 h-full">
+                                <div class="font-medium text-yellow-800">Database Systems</div>
+                                <div class="text-sm text-yellow-600">CS-4A • Room C105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r bg-purple-50">
+                            <div class="bg-yellow-100 p-2 rounded-lg border-l-4 border-yellow-500 h-full">
+                                <div class="font-medium text-yellow-800">Database Systems</div>
+                                <div class="text-sm text-yellow-600">CS-4A • Room C105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r">
+                            <div class="bg-yellow-100 p-2 rounded-lg border-l-4 border-yellow-500 h-full">
+                                <div class="font-medium text-yellow-800">Database Systems</div>
+                                <div class="text-sm text-yellow-600">CS-4A • Room C105</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 15:00 - 16:00 -->
+                    <div class="grid grid-cols-8 border-b">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">15:00 - 16:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r">
+                            <div class="bg-green-100 p-2 rounded-lg border-l-4 border-green-500 h-full">
+                                <div class="font-medium text-green-800">Office Hours</div>
+                                <div class="text-sm text-green-600">Room D120</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+
+                    <!-- Time Slot: 16:00 - 17:00 -->
+                    <div class="grid grid-cols-8">
+                        <div class="p-4 border-r bg-gray-50 flex justify-center items-center">
+                            <span class="text-sm font-medium text-gray-500">16:00 - 17:00</span>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r bg-purple-50"></div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2 border-r">
+                            <div class="bg-green-100 p-2 rounded-lg border-l-4 border-green-500 h-full">
+                                <div class="font-medium text-green-800">Office Hours</div>
+                                <div class="text-sm text-green-600">Room D120</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r"></div>
+                        <div class="p-2"></div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-md font-semibold text-gray-800 mb-4">Legend</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-700">Data Structures</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-purple-500 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-700">Algorithm Design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-700">Database Systems</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-700">Office Hours</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+                            <span class="text-sm text-gray-700">Break Time</span>
+                        </div>
+                        <div class="flex items-center ml-auto">
+                            <div class="w-4 h-4 bg-purple-100 rounded-sm mr-2"></div>
+                            <span class="text-sm text-gray-700">Today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin_nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navigation
+            if (typeof AdminNav !== 'undefined') {
+                AdminNav.init();
+            }
+
+            // Elements
+            const prevWeekBtn = document.getElementById('prevWeekBtn');
+            const nextWeekBtn = document.getElementById('nextWeekBtn');
+            const todayBtn = document.getElementById('todayBtn');
+            const currentWeekDisplay = document.getElementById('currentWeekDisplay');
+            const viewSelect = document.getElementById('viewSelect');
+            const printScheduleBtn = document.getElementById('printScheduleBtn');
+
+            // Event listeners
+            prevWeekBtn.addEventListener('click', function() {
+                // Navigate to previous week logic
+                alert('Navigate to previous week');
+            });
+
+            nextWeekBtn.addEventListener('click', function() {
+                // Navigate to next week logic
+                alert('Navigate to next week');
+            });
+
+            todayBtn.addEventListener('click', function() {
+                // Navigate to current week logic
+                alert('Navigate to current week');
+            });
+
+            viewSelect.addEventListener('change', function() {
+                // Change view logic
+                alert('View changed to: ' + this.value);
+            });
+
+            printScheduleBtn.addEventListener('click', function() {
+                // Print schedule logic
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html> 

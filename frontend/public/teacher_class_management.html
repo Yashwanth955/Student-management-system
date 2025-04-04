@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Management - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar - will be injected by admin_nav.js -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-6">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Class Management</h1>
+                        <p class="text-sm text-gray-600">Manage your classes and students</p>
+                    </div>
+                    <a href="teacher_dashboard.html" class="text-purple-600 hover:text-purple-800">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+                    </a>
+                </div>
+
+                <!-- Class Selection -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="w-full md:w-auto md:flex-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Select Class</label>
+                            <select id="classSelect" class="w-full rounded-md border p-2 focus:ring-purple-500 focus:border-purple-500">
+                                <option value="">Select a Class</option>
+                                <option value="CS201">Data Structures (CS201)</option>
+                                <option value="CS301">Algorithm Design (CS301)</option>
+                                <option value="CS401">Database Systems (CS401)</option>
+                            </select>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Academic Year</label>
+                            <select id="academicYearSelect" class="w-full rounded-md border p-2 focus:ring-purple-500 focus:border-purple-500">
+                                <option value="2023-2024">2023-2024</option>
+                                <option value="2022-2023">2022-2023</option>
+                                <option value="2021-2022">2021-2022</option>
+                            </select>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Semester</label>
+                            <select id="semesterSelect" class="w-full rounded-md border p-2 focus:ring-purple-500 focus:border-purple-500">
+                                <option value="1">First Semester</option>
+                                <option value="2">Second Semester</option>
+                                <option value="summer">Summer Semester</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class Information -->
+                <div id="classInfoSection" class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex flex-wrap justify-between mb-6">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-800 mb-2">Data Structures (CS201)</h2>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <div>
+                                    <i class="fas fa-users mr-1"></i> 35 Students
+                                </div>
+                                <div>
+                                    <i class="fas fa-calendar-day mr-1"></i> Mon, Wed, Fri (9:00 - 10:00 AM)
+                                </div>
+                                <div>
+                                    <i class="fas fa-map-marker-alt mr-1"></i> Room B201
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button id="sendAnnouncementBtn" class="flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200">
+                                <i class="fas fa-bullhorn mr-1"></i> Announcement
+                            </button>
+                            <button id="exportDataBtn" class="flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-md hover:bg-green-200">
+                                <i class="fas fa-download mr-1"></i> Export Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Class Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-500">Average Attendance</div>
+                            <div class="text-2xl font-bold text-gray-800">88%</div>
+                            <div class="text-xs text-green-600">
+                                <i class="fas fa-arrow-up"></i> 2% from last week
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-500">Average Grade</div>
+                            <div class="text-2xl font-bold text-gray-800">B+</div>
+                            <div class="text-xs text-yellow-600">
+                                <i class="fas fa-minus"></i> Same as last semester
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-500">Assignment Completion</div>
+                            <div class="text-2xl font-bold text-gray-800">93%</div>
+                            <div class="text-xs text-green-600">
+                                <i class="fas fa-arrow-up"></i> 5% from last assignment
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-500">At-Risk Students</div>
+                            <div class="text-2xl font-bold text-gray-800">3</div>
+                            <div class="text-xs text-red-600">
+                                <i class="fas fa-arrow-up"></i> 1 more than last month
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabs Navigation -->
+                    <div class="border-b mb-6">
+                        <nav class="flex space-x-8">
+                            <button class="py-2 px-1 border-b-2 border-purple-500 text-purple-600 font-medium text-sm" data-tab="students">
+                                Students
+                            </button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="assignments">
+                                Assignments
+                            </button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="attendance">
+                                Attendance
+                            </button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="resources">
+                                Resources
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Students Tab Content -->
+                    <div id="studentsTab" class="tab-content">
+                        <!-- Search and Filter Bar -->
+                        <div class="flex flex-wrap justify-between items-center mb-4 gap-4">
+                            <div class="relative w-full md:w-auto">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-search text-gray-400"></i>
+                                </div>
+                                <input type="text" id="searchStudent" placeholder="Search students..." class="pl-10 pr-4 py-2 border rounded-md w-full md:w-72">
+                            </div>
+                            <div class="flex space-x-2 w-full md:w-auto">
+                                <select id="filterStatus" class="border rounded-md py-2 px-3 text-sm">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="at-risk">At-Risk</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                <select id="sortBy" class="border rounded-md py-2 px-3 text-sm">
+                                    <option value="name">Sort by Name</option>
+                                    <option value="id">Sort by ID</option>
+                                    <option value="grade">Sort by Grade</option>
+                                    <option value="attendance">Sort by Attendance</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Students Table -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Student
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            ID
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Attendance
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Current Grade
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 mr-3">
+                                                    A
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Alice Johnson</div>
+                                                    <div class="text-sm text-gray-500">alice.j@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            STU001
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 98%"></div>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mt-1">98% (49/50)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                A (95%)
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="student_profile.html?id=STU001" class="text-purple-600 hover:text-purple-900 mr-3">
+                                                <i class="fas fa-user"></i>
+                                            </a>
+                                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">
+                                                <i class="fas fa-chart-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-600 hover:text-gray-900">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 mr-3">
+                                                    B
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Bob Smith</div>
+                                                    <div class="text-sm text-gray-500">bob.s@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            STU002
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 82%"></div>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mt-1">82% (41/50)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                                B (85%)
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="student_profile.html?id=STU002" class="text-purple-600 hover:text-purple-900 mr-3">
+                                                <i class="fas fa-user"></i>
+                                            </a>
+                                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">
+                                                <i class="fas fa-chart-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-600 hover:text-gray-900">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 mr-3">
+                                                    C
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Charlie Brown</div>
+                                                    <div class="text-sm text-gray-500">charlie.b@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            STU003
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div class="bg-red-500 h-2.5 rounded-full" style="width: 65%"></div>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mt-1">65% (33/50)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                                                D (65%)
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                                                At-Risk
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="student_profile.html?id=STU003" class="text-purple-600 hover:text-purple-900 mr-3">
+                                                <i class="fas fa-user"></i>
+                                            </a>
+                                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">
+                                                <i class="fas fa-chart-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-600 hover:text-gray-900">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="text-sm text-gray-500">
+                                Showing 3 of 35 students
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 border rounded text-gray-600">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="px-3 py-1 border rounded bg-purple-600 text-white">1</button>
+                                <button class="px-3 py-1 border rounded text-gray-600">2</button>
+                                <button class="px-3 py-1 border rounded text-gray-600">3</button>
+                                <button class="px-3 py-1 border rounded text-gray-600">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Modal -->
+    <div id="announcementModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+        <div class="bg-white rounded-lg shadow-xl max-w-xl w-full mx-4">
+            <div class="flex justify-between items-center p-6 border-b">
+                <h3 class="font-semibold text-xl text-gray-800">Send Announcement</h3>
+                <button id="closeAnnouncementModalBtn" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form id="announcementForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input type="text" name="subject" required class="mt-1 block w-full border rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea name="message" rows="4" required class="mt-1 block w-full border rounded-md shadow-sm p-2"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Recipients</label>
+                        <div class="mt-2 space-y-2">
+                            <div class="flex items-center">
+                                <input id="allStudents" name="recipients" type="radio" checked class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="allStudents" class="ml-2 block text-sm text-gray-700">All students in this class</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="selectedStudents" name="recipients" type="radio" class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="selectedStudents" class="ml-2 block text-sm text-gray-700">Selected students only</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="atRiskStudents" name="recipients" type="radio" class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="atRiskStudents" class="ml-2 block text-sm text-gray-700">At-risk students only</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Send via</label>
+                        <div class="mt-2 space-y-2">
+                            <div class="flex items-center">
+                                <input id="sendEmail" name="sendVia" type="checkbox" checked class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="sendEmail" class="ml-2 block text-sm text-gray-700">Email</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="sendSMS" name="sendVia" type="checkbox" class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="sendSMS" class="ml-2 block text-sm text-gray-700">SMS</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="sendPortal" name="sendVia" type="checkbox" checked class="h-4 w-4 text-purple-600 border-gray-300">
+                                <label for="sendPortal" class="ml-2 block text-sm text-gray-700">Portal Notification</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex justify-end space-x-3 p-6 border-t">
+                <button id="cancelAnnouncementBtn" class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button id="sendAnnouncementSubmitBtn" class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
+                    Send Announcement
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin_nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navigation
+            if (typeof AdminNav !== 'undefined') {
+                AdminNav.init();
+            }
+
+            // Elements
+            const classSelect = document.getElementById('classSelect');
+            const sendAnnouncementBtn = document.getElementById('sendAnnouncementBtn');
+            const announcementModal = document.getElementById('announcementModal');
+            const closeAnnouncementModalBtn = document.getElementById('closeAnnouncementModalBtn');
+            const cancelAnnouncementBtn = document.getElementById('cancelAnnouncementBtn');
+            const sendAnnouncementSubmitBtn = document.getElementById('sendAnnouncementSubmitBtn');
+            const announcementForm = document.getElementById('announcementForm');
+            const tabButtons = document.querySelectorAll('[data-tab]');
+
+            // Tab switching
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('border-purple-500', 'text-purple-600');
+                        btn.classList.add('border-transparent', 'text-gray-500');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('border-purple-500', 'text-purple-600');
+                    this.classList.remove('border-transparent', 'text-gray-500');
+                    
+                    // Show the corresponding tab content
+                    const tabName = this.getAttribute('data-tab');
+                    // Implement tab switching logic here
+                    alert(`Switching to ${tabName} tab`);
+                });
+            });
+
+            // Class selection
+            classSelect.addEventListener('change', function() {
+                if (this.value) {
+                    // Logic to load class data
+                    alert(`Loading data for class ${this.value}`);
+                }
+            });
+
+            // Announcement Modal
+            function openAnnouncementModal() {
+                announcementModal.classList.remove('hidden');
+            }
+
+            function closeAnnouncementModal() {
+                announcementModal.classList.add('hidden');
+                announcementForm.reset();
+            }
+
+            sendAnnouncementBtn.addEventListener('click', openAnnouncementModal);
+            closeAnnouncementModalBtn.addEventListener('click', closeAnnouncementModal);
+            cancelAnnouncementBtn.addEventListener('click', closeAnnouncementModal);
+
+            sendAnnouncementSubmitBtn.addEventListener('click', function() {
+                if (announcementForm.checkValidity()) {
+                    // Submit announcement logic
+                    alert('Announcement sent successfully!');
+                    closeAnnouncementModal();
+                } else {
+                    announcementForm.reportValidity();
+                }
+            });
+
+            // Export data
+            document.getElementById('exportDataBtn').addEventListener('click', function() {
+                alert('Exporting class data...');
+            });
+
+            // Search and filter
+            document.getElementById('searchStudent').addEventListener('input', function() {
+                // Search logic
+                console.log('Searching for:', this.value);
+            });
+
+            document.getElementById('filterStatus').addEventListener('change', function() {
+                // Filter logic
+                console.log('Filtering by status:', this.value);
+            });
+
+            document.getElementById('sortBy').addEventListener('change', function() {
+                // Sorting logic
+                console.log('Sorting by:', this.value);
+            });
+        });
+    </script>
+</body>
+</html> 

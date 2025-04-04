@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Documents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .sidebar-icon {
+            @apply w-12 h-12 flex items-center justify-center text-white hover:bg-white/20 rounded-xl transition-all;
+        }
+        .document-card {
+            @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex">
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold">Documents</h1>
+                <p class="text-gray-500">Access and manage your academic documents</p>
+            </div>
+            <button onclick="openUploadModal()" class="flex items-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                <span class="material-icons mr-2">upload_file</span>
+                Upload Document
+            </button>
+        </header>
+
+        <!-- Document Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Academic Records</p>
+                        <h3 class="text-2xl font-bold">12</h3>
+                    </div>
+                    <span class="material-icons text-purple-600 text-3xl">school</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Certificates</p>
+                        <h3 class="text-2xl font-bold">8</h3>
+                    </div>
+                    <span class="material-icons text-purple-600 text-3xl">workspace_premium</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Assignments</p>
+                        <h3 class="text-2xl font-bold">24</h3>
+                    </div>
+                    <span class="material-icons text-purple-600 text-3xl">assignment</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Other Documents</p>
+                        <h3 class="text-2xl font-bold">5</h3>
+                    </div>
+                    <span class="material-icons text-purple-600 text-3xl">folder</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Documents -->
+        <section class="bg-white p-6 rounded-xl shadow-sm mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Recent Documents</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search documents..." class="pl-10 pr-4 py-2 border rounded-lg">
+                        <span class="material-icons absolute left-3 top-2 text-gray-400">search</span>
+                    </div>
+                    <select class="border rounded-lg px-4 py-2">
+                        <option value="all">All Types</option>
+                        <option value="academic">Academic</option>
+                        <option value="certificate">Certificates</option>
+                        <option value="assignment">Assignments</option>
+                    </select>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Document Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="documentTable">
+                        <!-- Document rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Important Documents -->
+        <section class="bg-white p-6 rounded-xl shadow-sm">
+            <h2 class="text-xl font-bold mb-6">Important Documents</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="material-icons text-purple-600 text-3xl">description</span>
+                        <button class="text-purple-600 hover:text-purple-700">
+                            <span class="material-icons">download</span>
+                        </button>
+                    </div>
+                    <h3 class="font-medium">Academic Transcript</h3>
+                    <p class="text-sm text-gray-500">Last updated: Mar 10, 2024</p>
+                </div>
+                <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="material-icons text-purple-600 text-3xl">badge</span>
+                        <button class="text-purple-600 hover:text-purple-700">
+                            <span class="material-icons">download</span>
+                        </button>
+                    </div>
+                    <h3 class="font-medium">Student ID Card</h3>
+                    <p class="text-sm text-gray-500">Last updated: Jan 15, 2024</p>
+                </div>
+                <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="material-icons text-purple-600 text-3xl">workspace_premium</span>
+                        <button class="text-purple-600 hover:text-purple-700">
+                            <span class="material-icons">download</span>
+                        </button>
+                    </div>
+                    <h3 class="font-medium">Course Certificates</h3>
+                    <p class="text-sm text-gray-500">Last updated: Feb 28, 2024</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Upload Document</h3>
+                <button onclick="closeUploadModal()" class="text-gray-500 hover:text-gray-700">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <form id="uploadForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Document Type</label>
+                    <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option>Academic Record</option>
+                        <option>Certificate</option>
+                        <option>Assignment</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" rows="3"></textarea>
+                </div>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                    <input type="file" class="hidden" id="documentFile">
+                    <label for="documentFile" class="cursor-pointer">
+                        <span class="material-icons text-4xl text-gray-400">upload_file</span>
+                        <p class="mt-2 text-sm text-gray-600">Click to upload your document</p>
+                        <p class="text-xs text-gray-500">PDF, DOC, DOCX up to 10MB</p>
+                    </label>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" onclick="closeUploadModal()">Cancel</button>
+                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/components/student_nav.js"></script>
+    <script type="module">
+        import { DocumentManager } from '/js/dashboard.js';
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            if (!checkAuth()) return;
+
+            // Load recent documents
+            try {
+                const documents = await DocumentManager.getRecentDocuments();
+                const documentTable = document.getElementById('documentTable');
+                
+                documentTable.innerHTML = documents.map(doc => `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <span class="material-icons text-gray-400 mr-2">${getDocumentIcon(doc.type)}</span>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">${doc.name}</div>
+                                    <div class="text-sm text-gray-500">${doc.description || ''}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${doc.type}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatFileSize(doc.size)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(doc.date)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button onclick="downloadDocument('${doc.id}')" class="text-purple-600 hover:text-purple-900 mr-3">
+                                <span class="material-icons">download</span>
+                            </button>
+                            <button onclick="deleteDocument('${doc.id}')" class="text-red-600 hover:text-red-900">
+                                <span class="material-icons">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading documents:', error);
+            }
+        });
+
+        function getDocumentIcon(type) {
+            const icons = {
+                'pdf': 'picture_as_pdf',
+                'doc': 'description',
+                'image': 'image',
+                'spreadsheet': 'table_chart'
+            };
+            return icons[type] || 'insert_drive_file';
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        window.openUploadModal = function() {
+            document.getElementById('uploadModal').classList.remove('hidden');
+        };
+
+        window.closeUploadModal = function() {
+            document.getElementById('uploadModal').classList.add('hidden');
+        };
+
+        window.downloadDocument = async function(documentId) {
+            try {
+                await DocumentManager.downloadDocument(documentId);
+            } catch (error) {
+                console.error('Error downloading document:', error);
+                alert('Failed to download document');
+            }
+        };
+
+        window.deleteDocument = async function(documentId) {
+            if (confirm('Are you sure you want to delete this document?')) {
+                try {
+                    await DocumentManager.deleteDocument(documentId);
+                    // Refresh the document list
+                    location.reload();
+                } catch (error) {
+                    console.error('Error deleting document:', error);
+                    alert('Failed to delete document');
+                }
+            }
+        };
+    </script>
+</body>
+</html> 

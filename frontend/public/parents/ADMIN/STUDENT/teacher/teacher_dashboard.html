@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Management System</title>
+    <link rel="stylesheet" href="teacher.css">
+    <script defer src="teacher.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Teacher Management System</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Enter Teacher Details</h2>
+            <form id="teacherForm">
+                <input type="hidden" id="editIndex">
+                
+                <label for="name">Teacher Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="empId">Employee ID:</label>
+                <input type="text" id="empId" required>
+
+                <label for="department">Department:</label>
+                <input type="text" id="department" required>
+
+                <label for="experience">Experience (Years):</label>
+                <input type="number" id="experience" min="0" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="salary">Salary:</label>
+                <input type="number" id="salary" min="10000" required>
+                
+                <button type="submit">Add Teacher</button>
+            </form>
+        </div>
+
+        <div class="teacher-list">
+            <h2>Teacher Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Employee ID</th>
+                        <th>Department</th>
+                        <th>Experience</th>
+                        <th>Email</th>
+                        <th>Salary</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="teacherTableBody">
+                    <!-- Teacher details will be displayed here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

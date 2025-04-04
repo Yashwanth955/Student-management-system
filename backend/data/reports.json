@@ -1,0 +1,153 @@
+{
+  "semesters": [
+    {
+      "id": "SEM001",
+      "name": "Fall 2022",
+      "overview": {
+        "cgpa": 3.8,
+        "creditsCompleted": 18,
+        "totalCredits": 120,
+        "attendanceRate": 95,
+        "assignmentScore": 92
+      },
+      "gpaHistory": [3.6, 3.7, 3.8, 3.8, 3.9, 3.8],
+      "subjectPerformance": [
+        {
+          "subject": "Data Structures",
+          "score": 92
+        },
+        {
+          "subject": "Database Systems",
+          "score": 88
+        },
+        {
+          "subject": "Computer Networks",
+          "score": 85
+        },
+        {
+          "subject": "Web Development",
+          "score": 95
+        },
+        {
+          "subject": "Artificial Intelligence",
+          "score": 90
+        }
+      ],
+      "courseReports": [
+        {
+          "course": "CS301",
+          "name": "Data Structures and Algorithms",
+          "code": "DSA",
+          "credits": 4,
+          "grade": "A",
+          "attendance": "95%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS305",
+          "name": "Database Management Systems",
+          "code": "DBMS",
+          "credits": 4,
+          "grade": "A-",
+          "attendance": "92%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS310",
+          "name": "Computer Networks",
+          "code": "CN",
+          "credits": 3,
+          "grade": "B+",
+          "attendance": "90%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS401",
+          "name": "Web Technologies",
+          "code": "WT",
+          "credits": 3,
+          "grade": "A+",
+          "attendance": "98%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS405",
+          "name": "Artificial Intelligence",
+          "code": "AI",
+          "credits": 4,
+          "grade": "A",
+          "attendance": "94%",
+          "status": "Completed"
+        }
+      ]
+    },
+    {
+      "id": "SEM002",
+      "name": "Spring 2023",
+      "overview": {
+        "cgpa": 3.9,
+        "creditsCompleted": 16,
+        "totalCredits": 120,
+        "attendanceRate": 93,
+        "assignmentScore": 90
+      },
+      "gpaHistory": [3.6, 3.7, 3.8, 3.8, 3.9, 3.9],
+      "subjectPerformance": [
+        {
+          "subject": "Operating Systems",
+          "score": 90
+        },
+        {
+          "subject": "Software Engineering",
+          "score": 94
+        },
+        {
+          "subject": "Machine Learning",
+          "score": 92
+        },
+        {
+          "subject": "Cybersecurity",
+          "score": 88
+        }
+      ],
+      "courseReports": [
+        {
+          "course": "CS302",
+          "name": "Operating Systems",
+          "code": "OS",
+          "credits": 4,
+          "grade": "A",
+          "attendance": "92%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS402",
+          "name": "Software Engineering",
+          "code": "SE",
+          "credits": 4,
+          "grade": "A",
+          "attendance": "95%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS450",
+          "name": "Machine Learning",
+          "code": "ML",
+          "credits": 4,
+          "grade": "A",
+          "attendance": "94%",
+          "status": "Completed"
+        },
+        {
+          "course": "CS410",
+          "name": "Cybersecurity",
+          "code": "CS",
+          "credits": 4,
+          "grade": "A-",
+          "attendance": "90%",
+          "status": "Completed"
+        }
+      ]
+    }
+  ]
+} 

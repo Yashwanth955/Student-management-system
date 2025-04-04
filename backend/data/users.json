@@ -1,0 +1,42 @@
+[
+    {
+        "email": "admin@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "admin"
+    },
+    {
+        "email": "principal@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "admin"
+    },
+    {
+        "email": "john.doe@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "teacher"
+    },
+    {
+        "email": "mary.smith@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "teacher"
+    },
+    {
+        "email": "sarah.wilson@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "teacher"
+    },
+    {
+        "email": "student1@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "student"
+    },
+    {
+        "email": "student2@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "student"
+    },
+    {
+        "email": "student3@school.com",
+        "password": "$2a$10$XQWKYYBXhJbQp4YBGqMRi.ePGtG3DvPhF9HFxGq3XmS0SWx3EK6tW",
+        "role": "student"
+    }
+] 

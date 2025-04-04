@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">gradxcel</div>
+            <nav>
+                <ul>
+                    <li class="active">Dashboard</li>
+                    
+                    <p>
+                        <a href="STUDENT/student.html" class="bottom-link"> TEACHERS</a>
+                    </p>
+                    <p>
+                        <a href="STUDENT/student.html" class="bottom-link"> TEACHERS</a>
+                    </p>
+                
+                  <p>
+                    <a href="STUDENT/student.html" class="bottom-link"> TEACHERS</a>
+                </p>
+                <p>
+                    <a href="STUDENT/student.html" class="bottom-link"> TEACHERS</a>
+                </p>
+                </ul>
+            </nav>
+        </aside>
+        <main class="dashboard">
+            <header>
+                <h1>EDUMATE PORTAL</h1>
+                <div class="user-info">
+                    <span>John Doe</span>
+                    <img src="student.jpg" alt="User">
+                </div>
+            </header>
+            <section class="welcome">
+                <h2>SRI SAI RAM COLLAGE OF ENGINEERING </h2>
+                <p> togather we can do</p>
+            </section>
+            <section class="stats">
+                <div class="card">students<br>5,000</div>
+                <div class="card"> teacher<br>300</div>
+                <div class="card">parents<br>1500</div>
+            </section>
+            <section class="courses">
+                <h3>Management</h3>
+                <div class="course"> 📈FEES  COLLECTION AND EXPENCES</div>
+                <div class="course"> 🗓EVENT CALENDER</div>
+            </section>
+        </main>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/index.html"; // Redirect if not logged in
+        }
+    });
+</script>
+</body>
+</html>

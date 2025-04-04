@@ -1,0 +1,92 @@
+[
+  {
+    "id": "DOC001",
+    "name": "Fall Semester Transcript",
+    "type": "Academic Records",
+    "size": "245 KB",
+    "uploadDate": "2023-01-10T15:30:00",
+    "url": "/files/documents/DOC001.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC002",
+    "name": "Programming Excellence Certificate",
+    "type": "Certificates",
+    "size": "190 KB",
+    "uploadDate": "2023-02-05T10:15:00",
+    "url": "/files/documents/DOC002.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC003",
+    "name": "Database Project Report",
+    "type": "Assignments",
+    "size": "1.2 MB",
+    "uploadDate": "2023-03-20T14:45:00",
+    "url": "/files/documents/DOC003.pdf",
+    "isImportant": false
+  },
+  {
+    "id": "DOC004",
+    "name": "Student Handbook 2023",
+    "type": "Other Documents",
+    "size": "3.5 MB",
+    "uploadDate": "2023-01-02T09:00:00",
+    "url": "/files/documents/DOC004.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC005",
+    "name": "Spring Semester Exam Schedule",
+    "type": "Academic Records",
+    "size": "180 KB",
+    "uploadDate": "2023-03-01T11:20:00",
+    "url": "/files/documents/DOC005.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC006",
+    "name": "Web Development Project",
+    "type": "Assignments",
+    "size": "2.1 MB",
+    "uploadDate": "2023-02-28T16:50:00",
+    "url": "/files/documents/DOC006.zip",
+    "isImportant": false
+  },
+  {
+    "id": "DOC007",
+    "name": "Scholarship Award Letter",
+    "type": "Academic Records",
+    "size": "120 KB",
+    "uploadDate": "2023-01-15T13:10:00",
+    "url": "/files/documents/DOC007.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC008",
+    "name": "AI Competition Certificate",
+    "type": "Certificates",
+    "size": "210 KB",
+    "uploadDate": "2023-02-20T17:30:00",
+    "url": "/files/documents/DOC008.pdf",
+    "isImportant": true
+  },
+  {
+    "id": "DOC009",
+    "name": "Research Paper Draft",
+    "type": "Assignments",
+    "size": "750 KB",
+    "uploadDate": "2023-03-10T09:45:00",
+    "url": "/files/documents/DOC009.docx",
+    "isImportant": false
+  },
+  {
+    "id": "DOC010",
+    "name": "Student ID Card Copy",
+    "type": "Other Documents",
+    "size": "85 KB",
+    "uploadDate": "2023-01-05T10:00:00",
+    "url": "/files/documents/DOC010.jpg",
+    "isImportant": true
+  }
+] 

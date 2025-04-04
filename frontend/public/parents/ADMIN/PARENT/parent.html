@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents Dashboard</title>
+    <link rel="stylesheet" href="parent.css">
+    <script defer src="parent.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Parents Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="profile-section">
+            <h2>Student Profile</h2>
+            <img id="studentImage" src="student.jpg" >
+            <p><strong>Name:</strong> <span id="studentName"></span></p>
+            <p><strong>USN:</strong> <span id="studentUSN"></span></p>
+            <p><strong>Department:</strong> <span id="studentDept"></span></p>
+        </div>
+
+        <div class="attendance-section">
+            <h2>Attendance</h2>
+            <p><strong>Attendance Percentage:</strong> <span id="attendance"></span>%</p>
+        </div>
+
+        <div class="cgpa-section">
+            <h2>CGPA & SCGPA</h2>
+            <p><strong>Overall CGPA:</strong> <span id="overallCGPA"></span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>SCGPA</th>
+                        <th>CGPA</th>
+                        <th>View Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="cgpaTable">
+                    <!-- CGPA and SCGPA will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="marks-section" id="semesterMarksSection" style="display: none;">
+            <h2>Semester Marks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="semesterMarksTable">
+                    <!-- Semester Marks will be populated here -->
+                </tbody>
+            </table>
+            <button onclick="closeMarks()">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>

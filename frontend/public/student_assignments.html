@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assignments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .sidebar-icon {
+            @apply   w-12 h-12 flex items-center justify-center text-white hover:bg-white/20 rounded-xl transition-all;
+        }
+        .assignment-card {
+            @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex">
+    <!-- Sidebar -->
+    <aside class="w-20 bg-purple-600 min-h-screen flex flex-col items-center py-8 space-y-8">
+        <a href="/student_dashboard" class="sidebar-icon" title="Dashboard">
+            <span class="material-icons">school</span>
+        </a>
+        <a href="/student_profile" class="sidebar-icon" title="Profile">
+            <span class="material-icons">person</span>
+        </a>
+        <a href="/student_assignments" class="sidebar-icon" title="Assignments">
+            <span class="material-icons">assignment</span>
+        </a>
+        <a href="/student_documents" class="sidebar-icon" title="Documents">
+            <span class="material-icons">folder</span>
+        </a>
+        <a href="/student_reports" class="sidebar-icon" title="Reports">
+            <span class="material-icons">assessment</span>
+        </a>
+        <div class="sidebar-icon mt-auto relative" onclick="toggleNotifications()" title="Notifications">
+            <span class="material-icons">notifications</span>
+            <span class="notification-badge" id="notificationCount">3</span>
+        </div>
+        <div class="sidebar-icon" onclick="toggleSettings()" title="Settings">
+            <span class="material-icons">settings</span>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold">Assignments</h1>
+                <p class="text-gray-500">Track and submit your assignments</p>
+            </div>
+            <div class="flex space-x-4">
+                <select id="courseFilter" class="border rounded-lg px-4 py-2">
+                    <option value="">All Courses</option>
+                    <option value="math">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="english">English</option>
+                </select>
+                <select id="statusFilter" class="border rounded-lg px-4 py-2">
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="graded">Graded</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Assignment Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="assignment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Total Assignments</p>
+                        <h3 class="text-2xl font-bold">24</h3>
+                    </div>
+                    <span class="material-icons text-purple-600 text-3xl">assignment</span>
+                </div>
+            </div>
+            <div class="assignment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Completed</p>
+                        <h3 class="text-2xl font-bold">18</h3>
+                    </div>
+                    <span class="material-icons text-green-600 text-3xl">check_circle</span>
+                </div>
+            </div>
+            <div class="assignment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Pending</p>
+                        <h3 class="text-2xl font-bold">4</h3>
+                    </div>
+                    <span class="material-icons text-yellow-600 text-3xl">pending</span>
+                </div>
+            </div>
+            <div class="assignment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500">Average Grade</p>
+                        <h3 class="text-2xl font-bold">92%</h3>
+                    </div>
+                    <span class="material-icons text-blue-600 text-3xl">grade</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Assignments -->
+        <section class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Upcoming Assignments</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="upcomingAssignments">
+                <!-- Assignment cards will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- All Assignments -->
+        <section class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">All Assignments</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search assignments..." class="pl-10 pr-4 py-2 border rounded-lg">
+                        <span class="material-icons absolute left-3 top-2 text-gray-400">search</span>
+                    </div>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg">
+                        <span class="material-icons text-gray-500">filter_list</span>
+                    </button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assignment</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="assignmentTable">
+                        <!-- Assignment rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Submit Assignment Modal -->
+    <div id="submitModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Submit Assignment</h3>
+                <button class="text-gray-500 hover:text-gray-700" onclick="closeSubmitModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <form id="submitForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Assignment</label>
+                    <input type="text" id="assignmentName" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" readonly>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Comments</label>
+                    <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500" rows="3"></textarea>
+                </div>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                    <input type="file" class="hidden" id="assignmentFile">
+                    <label for="assignmentFile" class="cursor-pointer">
+                        <span class="material-icons text-4xl text-gray-400">upload_file</span>
+                        <p class="mt-2 text-sm text-gray-600">Click to upload your assignment</p>
+                        <p class="text-xs text-gray-500">PDF, DOC, DOCX up to 10MB</p>
+                    </label>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" onclick="closeSubmitModal()">Cancel</button>
+                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/components/nav.js"></script>
+    <script type="module">
+        import { AssignmentManager } from '/js/dashboard.js';
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            if (!checkAuth()) return;
+
+            // Fetch and display upcoming assignments
+            const upcomingAssignments = await AssignmentManager.getUpcomingAssignments();
+            const upcomingContainer = document.getElementById('upcomingAssignments');
+            
+            upcomingAssignments.forEach(assignment => {
+                const card = document.createElement('div');
+                card.className = 'assignment-card';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="material-icons text-purple-600">${getCourseIcon(assignment.course)}</span>
+                            <div>
+                                <h3 class="font-bold">${assignment.title}</h3>
+                                <p class="text-sm text-gray-500">${assignment.course}</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${
+                            getDueDateStyle(assignment.dueDate)
+                        }">${formatDueDate(assignment.dueDate)}</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">${assignment.description}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Points: ${assignment.points}</span>
+                        <button onclick="submitAssignment('${assignment.id}')" class="text-purple-600 hover:text-purple-700 text-sm font-medium">Submit →</button>
+                    </div>
+                `;
+                upcomingContainer.appendChild(card);
+            });
+
+            // Fetch and display all assignments
+            const allAssignments = await AssignmentManager.getAllAssignments();
+            const assignmentTable = document.getElementById('assignmentTable');
+            
+            allAssignments.forEach(assignment => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <span class="material-icons text-gray-400 mr-2">${getCourseIcon(assignment.course)}</span>
+                            <div>
+                                <div class="text-sm font-medium text-gray-900">${assignment.title}</div>
+                                <div class="text-sm text-gray-500">${assignment.description}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${assignment.course}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${formatDueDate(assignment.dueDate)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusStyle(assignment.status)}">
+                            ${assignment.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        ${assignment.grade || '-'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        ${getActionButtons(assignment)}
+                    </td>
+                `;
+                assignmentTable.appendChild(row);
+            });
+
+            // Handle filters
+            document.getElementById('courseFilter').addEventListener('change', filterAssignments);
+            document.getElementById('statusFilter').addEventListener('change', filterAssignments);
+        });
+
+        function getCourseIcon(course) {
+            const icons = {
+                'Mathematics': 'calculate',
+                'Science': 'science',
+                'English': 'menu_book',
+                'History': 'history_edu',
+                'Art': 'palette'
+            };
+            return icons[course] || 'school';
+        }
+
+        function getDueDateStyle(dueDate) {
+            const days = Math.ceil((new Date(dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+            if (days < 0) return 'bg-red-100 text-red-800';
+            if (days < 3) return 'bg-yellow-100 text-yellow-800';
+            return 'bg-green-100 text-green-800';
+        }
+
+        function getStatusStyle(status) {
+            const styles = {
+                'Pending': 'bg-yellow-100 text-yellow-800',
+                'Submitted': 'bg-blue-100 text-blue-800',
+                'Graded': 'bg-green-100 text-green-800',
+                'Late': 'bg-red-100 text-red-800'
+            };
+            return styles[status] || 'bg-gray-100 text-gray-800';
+        }
+
+        function formatDueDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function getActionButtons(assignment) {
+            if (assignment.status === 'Graded') {
+                return `
+                    <button class="text-purple-600 hover:text-purple-900" onclick="AssignmentManager.viewFeedback('${assignment.id}')">
+                        <span class="material-icons">feedback</span>
+                    </button>
+                `;
+            }
+            return `
+                <button class="text-purple-600 hover:text-purple-900" onclick="submitAssignment('${assignment.id}')">
+                    <span class="material-icons">upload_file</span>
+                </button>
+            `;
+        }
+
+        function submitAssignment(id) {
+            document.getElementById('submitModal').classList.remove('hidden');
+            document.getElementById('assignmentName').value = id;
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('submitModal').classList.add('hidden');
+        }
+
+        async function filterAssignments() {
+            const course = document.getElementById('courseFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            const filteredAssignments = await AssignmentManager.filterAssignments(course, status);
+            // Update table with filtered assignments
+            // ... (similar to above table population code)
+        }
+
+        function toggleNotifications() {
+            // Notification functionality can be implemented later
+            alert('Notifications panel coming soon!');
+        }
+
+        function toggleSettings() {
+            // Settings functionality can be implemented later
+            alert('Settings panel coming soon!');
+        }
+
+        // Add active state to current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const sidebarLinks = document.querySelectorAll('.sidebar-icon');
+            
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('bg-white/20');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

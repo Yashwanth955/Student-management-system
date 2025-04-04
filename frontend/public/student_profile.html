@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar - will be injected by admin_nav.js -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-6">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Student Profile</h1>
+                        <p class="text-sm text-gray-600">View and manage student information</p>
+                    </div>
+                    <div id="backBtn" class="text-purple-600 hover:text-purple-800 cursor-pointer">
+                        <i class="fas fa-arrow-left mr-2"></i>Back
+                    </div>
+                </div>
+
+                <!-- Student Profile Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left Column: Student Info & Stats -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <!-- Student Card -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex flex-col items-center">
+                                <div class="h-24 w-24 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-2xl font-bold mb-4">
+                                    A
+                                </div>
+                                <h2 class="text-xl font-bold text-gray-800">Alice Johnson</h2>
+                                <p class="text-sm text-gray-600 mb-2">Student ID: STU001</p>
+                                <div class="px-2 py-1 rounded-full bg-green-100 text-green-800 text-xs font-semibold mb-4">
+                                    Active
+                                </div>
+                                <div class="w-full space-y-2">
+                                    <div class="flex items-center text-sm">
+                                        <i class="fas fa-envelope w-6 text-gray-500"></i>
+                                        <span>alice.j@example.com</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i class="fas fa-phone w-6 text-gray-500"></i>
+                                        <span>(123) 456-7890</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i class="fas fa-calendar w-6 text-gray-500"></i>
+                                        <span>DOB: January 15, 2002</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex justify-center space-x-3">
+                                <button class="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                                <button class="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200">
+                                    <i class="fas fa-phone"></i>
+                                </button>
+                                <button class="p-2 rounded-full bg-red-100 text-red-600 hover:bg-red-200">
+                                    <i class="fas fa-flag"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Academic Info -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Academic Information</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Department:</span>
+                                    <span class="text-sm font-medium">Computer Science</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Class/Year:</span>
+                                    <span class="text-sm font-medium">Second Year</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Roll Number:</span>
+                                    <span class="text-sm font-medium">CS2023-045</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Admission Date:</span>
+                                    <span class="text-sm font-medium">Aug 15, 2022</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Current GPA:</span>
+                                    <span class="text-sm font-medium">3.8/4.0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Guardian Information -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Guardian Information</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Name:</span>
+                                    <span class="text-sm font-medium">Robert Johnson</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Relationship:</span>
+                                    <span class="text-sm font-medium">Father</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Contact:</span>
+                                    <span class="text-sm font-medium">(123) 789-4560</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Email:</span>
+                                    <span class="text-sm font-medium">robert.j@example.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Performance Tabs -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Performance Summary -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Performance Overview</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <div class="text-sm text-gray-600">Attendance</div>
+                                    <div class="text-2xl font-bold text-gray-800">98%</div>
+                                    <div class="text-xs text-green-600">Above class average</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <div class="text-sm text-gray-600">Average Grade</div>
+                                    <div class="text-2xl font-bold text-gray-800">A (95%)</div>
+                                    <div class="text-xs text-blue-600">Top 5% of class</div>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <div class="text-sm text-gray-600">Assignment Completion</div>
+                                    <div class="text-2xl font-bold text-gray-800">100%</div>
+                                    <div class="text-xs text-purple-600">All assignments submitted</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tabs Navigation -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <div class="border-b">
+                                <nav class="flex space-x-8 px-6">
+                                    <button class="py-4 px-1 border-b-2 border-purple-500 text-purple-600 font-medium" data-tab="courses">
+                                        Courses
+                                    </button>
+                                    <button class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="attendance">
+                                        Attendance
+                                    </button>
+                                    <button class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="assignments">
+                                        Assignments
+                                    </button>
+                                    <button class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="timetable">
+                                        Timetable
+                                    </button>
+                                    <button class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="reports">
+                                        Reports
+                                    </button>
+                                </nav>
+                            </div>
+
+                            <!-- Courses Tab (Default Active) -->
+                            <div id="coursesTab" class="tab-content p-6">
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
+                                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
+                                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instructor</th>
+                                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900">Data Structures</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">CS201</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Prof. John Doe</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                        A (95%)
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                        Active
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900">Algorithm Design</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">CS301</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Prof. Jane Smith</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                                        B+ (87%)
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                        Active
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900">Database Systems</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">CS401</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Prof. David Wilson</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                        A- (92%)
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                        Active
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Attendance Tab (Hidden by Default) -->
+                            <div id="attendanceTab" class="tab-content p-6 hidden">
+                                <div class="mb-4 flex flex-wrap items-center justify-between gap-4">
+                                    <div>
+                                        <h4 class="text-md font-medium text-gray-800">Attendance History</h4>
+                                        <p class="text-sm text-gray-500">Last 30 days attendance record</p>
+                                    </div>
+                                    <div class="flex space-x-3">
+                                        <select class="border rounded-md py-1 px-3 text-sm">
+                                            <option value="30">Last 30 Days</option>
+                                            <option value="60">Last 60 Days</option>
+                                            <option value="90">Last 90 Days</option>
+                                            <option value="all">All Time</option>
+                                        </select>
+                                        <a href="#" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-md text-sm hover:bg-purple-200">
+                                            <i class="fas fa-download mr-1"></i> Export
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Attendance Summary Cards -->
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <div class="text-sm text-gray-500">Present Days</div>
+                                        <div class="text-2xl font-bold text-green-600">28</div>
+                                        <div class="text-xs text-gray-500">Out of 30 days</div>
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <div class="text-sm text-gray-500">Absent Days</div>
+                                        <div class="text-2xl font-bold text-red-600">2</div>
+                                        <div class="text-xs text-gray-500">Out of 30 days</div>
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <div class="text-sm text-gray-500">Late Arrivals</div>
+                                        <div class="text-2xl font-bold text-yellow-600">1</div>
+                                        <div class="text-xs text-gray-500">In 30 days</div>
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <div class="text-sm text-gray-500">Attendance Rate</div>
+                                        <div class="text-2xl font-bold text-blue-600">93%</div>
+                                        <div class="text-xs text-gray-500">Class average: 85%</div>
+                                    </div>
+                                </div>
+
+                                <!-- Attendance Calendar View -->
+                                <div class="bg-white border rounded-lg p-4">
+                                    <div class="grid grid-cols-7 gap-1 text-center mb-2">
+                                        <div class="text-xs font-medium text-gray-500">Mon</div>
+                                        <div class="text-xs font-medium text-gray-500">Tue</div>
+                                        <div class="text-xs font-medium text-gray-500">Wed</div>
+                                        <div class="text-xs font-medium text-gray-500">Thu</div>
+                                        <div class="text-xs font-medium text-gray-500">Fri</div>
+                                        <div class="text-xs font-medium text-gray-500">Sat</div>
+                                        <div class="text-xs font-medium text-gray-500">Sun</div>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1">
+                                        <!-- Calendar days with attendance status -->
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-400 text-sm">26</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-400 text-sm">27</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-400 text-sm">28</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-400 text-sm">29</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-400 text-sm">30</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">1</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-600 text-sm">2</div>
+                                        
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">3</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">4</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">5</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">6</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">7</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">8</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-600 text-sm">9</div>
+                                        
+                                        <div class="h-10 flex items-center justify-center bg-red-100 rounded-md text-red-800 text-sm">10</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">11</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">12</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">13</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">14</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">15</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-600 text-sm">16</div>
+                                        
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">17</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">18</div>
+                                        <div class="h-10 flex items-center justify-center bg-yellow-100 rounded-md text-yellow-800 text-sm">19</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">20</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">21</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">22</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-600 text-sm">23</div>
+                                        
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">24</div>
+                                        <div class="h-10 flex items-center justify-center bg-red-100 rounded-md text-red-800 text-sm">25</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">26</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">27</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">28</div>
+                                        <div class="h-10 flex items-center justify-center bg-green-100 rounded-md text-green-800 text-sm">29</div>
+                                        <div class="h-10 flex items-center justify-center bg-gray-100 rounded-md text-gray-600 text-sm">30</div>
+                                    </div>
+                                    <div class="flex justify-center mt-4 space-x-4 text-sm">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-green-100 rounded-full mr-1"></div>
+                                            <span class="text-gray-600">Present</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-red-100 rounded-full mr-1"></div>
+                                            <span class="text-gray-600">Absent</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-yellow-100 rounded-full mr-1"></div>
+                                            <span class="text-gray-600">Late</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-gray-100 rounded-full mr-1"></div>
+                                            <span class="text-gray-600">Holiday/Weekend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other tabs would go here but are hidden by default -->
+                            <div id="assignmentsTab" class="tab-content p-6 hidden">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Assignments</h4>
+                                <p class="text-gray-500">Student's assignment records will appear here.</p>
+                            </div>
+
+                            <div id="timetableTab" class="tab-content p-6 hidden">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Timetable</h4>
+                                <p class="text-gray-500">Student's class schedule will appear here.</p>
+                            </div>
+
+                            <div id="reportsTab" class="tab-content p-6 hidden">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Reports</h4>
+                                <p class="text-gray-500">Student's performance reports will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin_nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navigation
+            if (typeof AdminNav !== 'undefined') {
+                AdminNav.init();
+            }
+
+            // Tab switching functionality
+            const tabButtons = document.querySelectorAll('[data-tab]');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('border-purple-500', 'text-purple-600');
+                        btn.classList.add('border-transparent', 'text-gray-500');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('border-purple-500', 'text-purple-600');
+                    this.classList.remove('border-transparent', 'text-gray-500');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show the corresponding tab content
+                    const tabName = this.getAttribute('data-tab');
+                    document.getElementById(tabName + 'Tab').classList.remove('hidden');
+                });
+            });
+
+            // Back button functionality
+            document.getElementById('backBtn').addEventListener('click', function() {
+                // Check if we came from a specific page and go back to it
+                const referrer = document.referrer;
+                if (referrer && referrer.includes('teacher_class_management.html')) {
+                    window.location.href = 'teacher_class_management.html';
+                } else if (referrer && referrer.includes('teacher_attendance.html')) {
+                    window.location.href = 'teacher_attendance.html';
+                } else {
+                    // Default fallback
+                    window.location.href = 'teacher_dashboard.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

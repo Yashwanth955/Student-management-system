@@ -1,0 +1,139 @@
+[
+  {
+    "id": "ASGN001",
+    "title": "Data Structures Implementation",
+    "course": "CS301",
+    "courseName": "Data Structures and Algorithms",
+    "description": "Implement a binary search tree and perform various operations on it.",
+    "dueDate": "2023-04-15T23:59:59",
+    "maxPoints": 100,
+    "status": "upcoming",
+    "attachments": [
+      {
+        "name": "assignment_instructions.pdf",
+        "url": "/files/assignments/ASGN001/instructions.pdf",
+        "size": "256 KB"
+      }
+    ]
+  },
+  {
+    "id": "ASGN002",
+    "title": "Circuit Design Project",
+    "course": "EE201",
+    "courseName": "Digital Electronics",
+    "description": "Design a 4-bit counter circuit and simulate it using appropriate software.",
+    "dueDate": "2023-04-20T23:59:59",
+    "maxPoints": 100,
+    "status": "upcoming",
+    "attachments": [
+      {
+        "name": "circuit_requirements.pdf",
+        "url": "/files/assignments/ASGN002/requirements.pdf",
+        "size": "312 KB"
+      }
+    ]
+  },
+  {
+    "id": "ASGN003",
+    "title": "Database Design",
+    "course": "CS305",
+    "courseName": "Database Management Systems",
+    "description": "Design a normalized database schema for a college management system.",
+    "dueDate": "2023-04-10T23:59:59",
+    "maxPoints": 100,
+    "status": "completed",
+    "score": 92,
+    "submittedDate": "2023-04-09T14:25:10",
+    "feedback": "Excellent normalization. Consider adding more constraints to ensure data integrity.",
+    "attachments": [
+      {
+        "name": "assignment_brief.pdf",
+        "url": "/files/assignments/ASGN003/brief.pdf",
+        "size": "180 KB"
+      }
+    ],
+    "submissionFiles": [
+      {
+        "name": "er_diagram.pdf",
+        "url": "/files/submissions/ASGN003/er_diagram.pdf",
+        "size": "420 KB"
+      },
+      {
+        "name": "schema_definitions.sql",
+        "url": "/files/submissions/ASGN003/schema.sql",
+        "size": "15 KB"
+      }
+    ]
+  },
+  {
+    "id": "ASGN004",
+    "title": "Operating System Concepts",
+    "course": "CS302",
+    "courseName": "Operating Systems",
+    "description": "Implement a simple process scheduler using C/C++.",
+    "dueDate": "2023-03-25T23:59:59",
+    "maxPoints": 100,
+    "status": "completed",
+    "score": 85,
+    "submittedDate": "2023-03-24T18:10:45",
+    "feedback": "Good implementation. Could improve the efficiency of the scheduling algorithm.",
+    "attachments": [
+      {
+        "name": "scheduler_requirements.pdf",
+        "url": "/files/assignments/ASGN004/requirements.pdf",
+        "size": "230 KB"
+      }
+    ],
+    "submissionFiles": [
+      {
+        "name": "scheduler.cpp",
+        "url": "/files/submissions/ASGN004/scheduler.cpp",
+        "size": "28 KB"
+      },
+      {
+        "name": "report.pdf",
+        "url": "/files/submissions/ASGN004/report.pdf",
+        "size": "350 KB"
+      }
+    ]
+  },
+  {
+    "id": "ASGN005",
+    "title": "Web Application Development",
+    "course": "CS401",
+    "courseName": "Web Technologies",
+    "description": "Develop a responsive web application using modern JavaScript frameworks.",
+    "dueDate": "2023-04-05T23:59:59",
+    "maxPoints": 100,
+    "status": "overdue",
+    "attachments": [
+      {
+        "name": "project_specifications.pdf",
+        "url": "/files/assignments/ASGN005/specifications.pdf",
+        "size": "275 KB"
+      }
+    ]
+  },
+  {
+    "id": "ASGN006",
+    "title": "Machine Learning Algorithms",
+    "course": "CS405",
+    "courseName": "Artificial Intelligence",
+    "description": "Implement and compare the performance of different classification algorithms.",
+    "dueDate": "2023-04-25T23:59:59",
+    "maxPoints": 100,
+    "status": "upcoming",
+    "attachments": [
+      {
+        "name": "dataset.csv",
+        "url": "/files/assignments/ASGN006/dataset.csv",
+        "size": "1.2 MB"
+      },
+      {
+        "name": "assignment_details.pdf",
+        "url": "/files/assignments/ASGN006/details.pdf",
+        "size": "320 KB"
+      }
+    ]
+  }
+] 
